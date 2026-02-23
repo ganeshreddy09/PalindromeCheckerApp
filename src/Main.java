@@ -1,7 +1,6 @@
-
 import java.util.Scanner;
 
-public class Main{
+public class UseCase4PalindromeCheckerApp {
 
 
     public static void main(String[] args) {
@@ -9,17 +8,27 @@ public class Main{
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a string to check: ");
-        String original = scanner.nextLine();
+        String input = scanner.nextLine();
 
-        String reversed = "";
+        // Convert string to character array
+        char[] characters = input.toCharArray();
 
-        // Iterate string in reverse order
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed += original.charAt(i);
+        int start = 0;
+        int end = characters.length - 1;
+        boolean isPalindrome = true;
+
+        // Two-pointer comparison
+        while (start < end) {
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        // Compare original and reversed strings
-        if (original.equals(reversed)) {
+        // Display result
+        if (isPalindrome) {
             System.out.println("Result: The string is a palindrome.");
         } else {
             System.out.println("Result: The string is NOT a palindrome.");
